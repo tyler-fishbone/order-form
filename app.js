@@ -3,6 +3,8 @@
 // ** array of all product instances **
 Product.allProducts = [];
 
+var productOrderForm = document.getElementById('product-form');
+
 // constructor for products
 function Product(filepath, name, quantityInCart) {
   this.filepath = filepath;
@@ -24,6 +26,16 @@ function loadLocalStoreage() {
     Product.allProducts = lSData;
     // var lSProductNames = JSON.parse(localStorage.getItem('arrayProductNames'));
     // arrayOfProductNames = lSProductNames;
+  }
+}
+
+function createDropdown() {
+  var selectEl = document.getElementById('product-dropdown');
+  for(var i in Product.allProducts){
+    var optionEl = document.createElement('option');
+    optionEl.textContent = Product.allProducts[i].name;
+    optionEl.value = Product.allProducts[i].name;
+    selectEl.appendChild(optionEl);
   }
 }
 
@@ -65,3 +77,4 @@ function instantiateProductObjects() {
 
 // call function on page load
 loadLocalStoreage();
+createDropdown();
