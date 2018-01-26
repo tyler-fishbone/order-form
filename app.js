@@ -62,18 +62,25 @@ function instantiateProductObjects() {
 }
 
 // function that runs when picture is clicked
-// function handleClick(e) {
+function updateCart(e) {
+  event.preventDefault();
+  var selectedProduct = e.target.productToPurchase.value;
+  var selectedQuantity = e.target.quantityInCart.value;
 
-//   // ++ to the timesClicked property for image user click on
-//   for(var i in Product.allProducts){
-//     if(e.target.alt === Product.allProducts[i].name){
-//       Product.allProducts[i].timesClicked++;
-//       console.log(Product.allProducts[i]);
-//     }
-//   }
-// }
+  console.log(selectedProduct);
+  console.log(selectedQuantity);
+
+  // ++ to the timesClicked property for image user click on
+  for(var i in Product.allProducts){
+    if(selectedProduct === Product.allProducts[i].name){
+      Product.allProducts[i].quantityInCart = selectedQuantity;
+      console.log(Product.allProducts[i]);
+    }
+  }
+  localStorage.setItem('shoppingCart', JSON.stringify(Product.allProducts));
+}
 // event listener
-// sectionEl.addEventListener('click', handleClick);
+productOrderForm.addEventListener('submit', updateCart);
 
 // call function on page load
 loadLocalStoreage();
