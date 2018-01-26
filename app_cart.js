@@ -27,7 +27,7 @@ Product.prototype.render = function () {
   //render image
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
-  tdEl.innerHTML = '<img src=' + this.filepath + ' alt="' + this.name + '">';
+  tdEl.innerHTML = '<img src="' + this.filepath + '" alt="' + this.name + '" width=100px>';
   trEl.appendChild(tdEl);
 
   //render name
